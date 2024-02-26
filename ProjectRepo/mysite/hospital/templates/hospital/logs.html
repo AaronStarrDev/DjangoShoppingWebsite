@@ -1,0 +1,23 @@
+<h1>System Log</h1>
+
+<table  border="1">
+	<tr>
+		<th>Time</th>
+		<th>User</th>
+		<th>Type</th>
+		<th>Message</th>
+	</tr>
+	{% for line in log %}
+		<tr>
+			{% for col in line %}
+			<td>
+				{{ col }}
+			</td>
+			{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+
+<form action="{% url 'hospital:ainfo' aid %}">
+	<input type="submit" value="Back">
+</form>

@@ -1,0 +1,61 @@
+<h1>Doctor Info for {{ user.firstName }} {{ user.lastName }}</h1>
+<table border="1">
+	<tr>
+		<td>Username</td>
+		<td colspan="3" >{{ user.userName }}</td>
+	</tr>
+	<tr>
+		<td>Hospitals of Employment</td>
+		<td colspan="3">
+		{% for h in user.doctorList.all %}
+			{{h.name}} <br/>
+		{% endfor %}
+		</td>
+		
+	</tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+	
+	<tr><td colspan="4"><center>Contact Information</center></td></tr>
+	<tr><td colspan="2">Phone Number:</td>
+		<td colspan="2">
+			{% if user.phoneNumber %}
+				{{ user.phoneNumber.phoneNumber }}
+			{% endif %}
+		</td>
+	<tr><td colspan="2">Address:</td>
+		<td colspan="2">
+			{{ user.address }}
+		</td></tr>
+	<tr><td colspan="2">Email:</td>
+		<td colspan="2">
+			{% if user.email %}
+				{{ user.email.email }}
+			{% endif %}
+		</td></tr>
+	<tr>
+		<td><form action="{% url 'hospital:dupdate' user.userName %}">
+            <input type="submit" value="Edit">
+
+        </form></td>
+
+        <td><form action="{% url 'hospital:dHospitaldir' user.userName %}">
+            <input type="submit" value="Directory">
+
+        </form></td>
+
+        <td><form action="{% url 'hospital:dpatientlist' user.userName %}">
+		    <input type="submit" value="Patients">
+        </form></td>
+
+        <td><form action="{% url 'hospital:dViewLabs' user.userName %}">
+			<input type="submit" value="View Lab(s)">
+		</form>
+
+		<td><form action="{% url 'hospital:dcal' user.userName %}">
+			<input type="submit" value="View Appointments">
+		</form>
+		<a href=""></a></td>
+		<td><form action="{% url 'hospital:home' %}">
+			<input type="submit" value="Log Out">
+		</form></td>
+	</tr>
+</table>

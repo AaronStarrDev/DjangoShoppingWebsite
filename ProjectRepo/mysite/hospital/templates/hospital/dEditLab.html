@@ -1,0 +1,36 @@
+<h1>Editing Lab</h1>
+Logged in as: {{ user.firstName }} {{ user.lastName }}
+
+<form action="{% url 'hospital:labUpdate' %}" method="post">
+	{% csrf_token %}
+
+    <br>
+	<label for="labName">Lab Name:</label>
+	<input type="text" name="labName" value={{lab.labName}} id="labName">
+	<br>
+	<label for="attending">Attending Doctor:</label>
+	<input type="text" name="attending" value={{lab.attending}} id="attending">
+	<br>
+    <label for="description">Description:</label>
+	<input type="text" name="description" value={{lab.description}} id="description">
+	<br>
+	<label for="state">Lab Status:</label>
+	<select name="state">
+		<option value="{{ Pending }}">{{ lab.state }}</option>
+        <option value="{{ Completed }}">{{ lab.state }}</option>
+	</select>
+
+    </form>
+
+<form action="{% url 'hospital:dViewLabs' d.userName%}">
+	<input type="submit" value="Cancel">
+</form>
+
+<!--
+    <form action="{% url 'hospital:dViewlabs' user.userName %}">
+	<input type="submit" value="Submit">
+    </form>
+    <form action="{% url 'hospital:dViewLabs' user.userName %}">
+	<input type="submit" value="Cancel">
+    </form>
+    -->

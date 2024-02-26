@@ -1,0 +1,46 @@
+<h1>New Lab</h1>
+
+{% if error_message %}
+	<p><strong>
+		An error occurred in lab creation:
+		<br/>
+		{{ error_message }}
+	</strong></p>
+{% endif %}
+
+<form action="{% url 'hospital:dNewLab' %}" method="post">
+	{% csrf_token %}
+	
+	<br>
+	<label for="labName">Lab Name:</label>
+	<input type="text" name="labName" value={{lab.labName}} id="labName">
+	<br>
+
+    <label for="attending">Attending Doctor:</label>
+	<select name="attending">
+		{% for d in doctors.all %}
+			<option value="{{ d.id }}">{{ d.userName }}</option>
+		{% endfor %}
+	</select>
+	<br>
+    <label for="patients">Patient:</label>
+	<select name="patients">
+		{% for p in patients.all %}
+			<option value="{{ p.id }}">{{ p.userName }}</option>
+		{% endfor %}
+	</select>
+
+    <label for="description">Description:</label>
+	<input type="text" name="description" value={{lab.description}} id="description">
+	<br>
+	<label for="state">Lab Status:</label>
+	<select name="state">
+		<option value="{{ Pending }}">{{ lab.state }}</option>
+        <option value="{{ Completed }}">{{ lab.state }}</option>
+	</select>
+
+</form>
+
+<form action="{% url 'hospital:dViewLabs' d.userName%}">
+	<input type="submit" value="Cancel">
+</form>

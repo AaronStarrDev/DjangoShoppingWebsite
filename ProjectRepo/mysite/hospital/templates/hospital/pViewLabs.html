@@ -1,0 +1,39 @@
+<h1>Labs [Patient View]</h1>
+Logged in as: {{ user.firstName }} {{ user.lastName }}
+<br>
+<table border="1">
+    {% if labs %}
+
+        <br>LABS:<br>
+        {% for l in labs %}
+            {% if l.patient.firstName == user.firstName and l.patient.lastName == user.lastName %}
+                {% if l.status == "Completed" %}
+                    <tr>
+                        <td>
+                            {{ l.labName }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ l.attending }}</td>
+                        <td>{{ l.status }}</td>
+                        <td>{{ l.description }}</td>
+                    </tr>
+                {% else %}
+                    There are no released labs in the system for you.
+                {% endif %}
+
+            {% else %}
+                There are no labs in the system for you.
+            {% endif %}
+        {% endfor %}
+
+    {% else %}
+       There are no labs in the system.
+    {% endif %}
+</table>
+<br>
+
+<br/>
+    <td><form action="{% url 'hospital:pinfo' user.userName %}">
+	<input type="submit" value="Back">
+    </form></td>

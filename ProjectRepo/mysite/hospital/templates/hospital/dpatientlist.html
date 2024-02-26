@@ -1,0 +1,22 @@
+<h1>Patients for {{ user.firstName }} {{ user.lastName }}</h1>
+<table border="1">
+    {% if patients %}
+       There are {{ patients|length }} patients:
+       {% for e in patients %}
+        <tr>
+            <td> {{ e.firstName }} {{ e.lastName }} </td>
+		    <td><form action="{% url 'hospital:dpatientinfo' user.userName e.userName %}">
+			    <input type="submit" value="Edit Medical Information">
+		    </form>
+		    </td>
+
+        </tr>
+       {% endfor %}
+    {% else %}
+       There are no records in the system
+    {% endif %}
+</table>
+
+<br/> <td><form action="{% url 'hospital:dinfo' user.userName %}">
+	<input type="submit" value="Back">
+</form></td>

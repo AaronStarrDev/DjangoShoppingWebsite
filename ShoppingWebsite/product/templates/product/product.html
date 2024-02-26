@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="d-flex flex-column vh-100">
+{% include 'html/header.html' %}
+<main class="flex-shrink-0">
+    <section>
+        <div class="container px-4 px-lg-5 pb-3">
+            <div class="row gx-5 gx-lg-5 align-items-center">
+                <div class="col me-4">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=940&hei=1112&fmt=png-alpha&.v=1604022365000" alt="" class="img-fluid">
+                </div>
+                <div class="col ms-5">
+                    <h1 class="display-5 fw-bolder">Apple AirPods Max</h1>
+                    <p class="fs-4 mb-3">Color: Sky Blue</p>
+                    <p class="fs-5 mb-5">Introducing AirPods Max — a perfect balance of exhilarating high-fidelity audio and the effortless magic of AirPods. The ultimate personal listening experience is here.</p>
+                    <h2 class="mb-4">$549.00</h2>
+                    <div class="d-flex">
+                        <input type="number" class="form-control text-center me-3" id="input_quantity" style="max-width: 4rem" value="1">
+                        <button class="btn btn-lg btn-outline-dark">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+        <div class="container px-4 px-lg-5 py-4">
+            <h1 class="fw-bold mb-5">Related products</h1>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <a href="#">
+                            <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <div class="py-2 text-center text-black">
+                                <a href="#" class="text-decoration-none">
+                                    <h4>Nice Product</h4>
+                                    <p class="mb-0">$ 20.00</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
+                                <button class="btn btn-outline-dark">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <a href="#">
+                            <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <div class="py-2 text-center text-black">
+                                <a href="#" class="text-decoration-none">
+                                    <h4>Nice Product</h4>
+                                    <p class="mb-0">$ 20.00</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
+                                <button class="btn btn-outline-dark">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <a href="#">
+                            <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <div class="py-2 text-center text-black">
+                                <a href="#" class="text-decoration-none">
+                                    <h4>Nice Product</h4>
+                                    <p class="mb-0">$ 20.00</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
+                                <button class="btn btn-outline-dark">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <a href="#">
+                            <img src="https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png" alt="" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <div class="py-2 text-center text-black">
+                                <a href="#" class="text-decoration-none">
+                                    <h4>Nice Product</h4>
+                                    <p class="mb-0">$ 20.00</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
+                                <button class="btn btn-outline-dark">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% include 'html/footer.html' %}

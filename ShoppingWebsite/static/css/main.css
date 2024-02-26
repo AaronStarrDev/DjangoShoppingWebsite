@@ -1,0 +1,44 @@
+.btn-primary, .btn-primary:active, .btn-primary:visited, .btn-primary:focus {
+    background-color: #51af9b !important;
+    border-color: #51af9b !important;
+}
+
+.btn-primary:hover {
+    background-color: #3f8c7b !important;
+    border-color: #3f8c7b !important;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgb(81 175 155 / 50%) !important;
+}
+
+.btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary:visited {
+    color: #51af9b !important;
+    border-color: #51af9b !important;
+}
+
+.btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: #51af9b !important;
+}
+
+.btn-outline-primary:active {
+    background-color: #51af9b !important;
+}
+
+input.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgb(81 175 155 / 50%) !important;
+}
+
+a {
+    color: #101313;
+}
+
+a:hover {
+    color: #347567;
+}
+
+/*home*/
+.banner {
+    background-color: #368877;
+}

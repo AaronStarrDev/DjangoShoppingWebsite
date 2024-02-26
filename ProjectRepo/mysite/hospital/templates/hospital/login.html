@@ -1,0 +1,25 @@
+<h1>Log In</h1>
+
+{% if error_message %}
+	<p><strong>
+		An error occured in logging in:
+		<br/>
+		{{ error_message }}
+	</strong></p>
+{% endif %}
+
+<form action="{% url 'hospital:loginSubmit' %}" method="post">
+	{% csrf_token %}
+	
+	<label for="username">Username:</label>
+	<input type="text" name="username" id="username">
+	</br>
+	<label for="username">Password:</label>
+	<input type="password" name="password" id="password">
+	</br>
+	<input type="submit">
+</form>
+
+<form action="{% url 'hospital:home' %}">
+	<input type="submit" value="Cancel">
+</form>

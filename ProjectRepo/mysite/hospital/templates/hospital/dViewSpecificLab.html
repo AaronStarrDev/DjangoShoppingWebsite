@@ -1,0 +1,25 @@
+<h1>Viewing Specific Lab Data</h1>
+Logged in as: {{ user.firstName }} {{ user.lastName }}
+<br>
+<table border="1">
+    {% if lab %}
+
+        <br>LAB:<br>
+        <tr>
+            <td>{{ l.labName }}</td>
+        </tr>
+        <tr>
+            <td>{{ l.attending }}</td>
+            <td>{{ l.status }}</td>
+            <td>{{ l.description }}</td>
+        </tr>
+    {% else %}
+       Error Occurred: No lab information received.
+    {% endif %}
+</table>
+<br>
+
+<br/>
+    <td><form action="{% url 'hospital:dViewLabs' user.userName %}">
+	<input type="submit" value="Back">
+    </form></td>

@@ -1,0 +1,25 @@
+<h1>Admin Info for {{ aid }}</h1>
+
+<form action="{% url 'hospital:logs' aid %}">
+	<input type="submit" value="View System Logs">
+</form>
+
+<form action="{% url 'hospital:registerDoctor' aid %}">
+	<input type="submit" value="Create a Doctor">
+</form>
+
+<form action="{% url 'hospital:registerNurse' aid %}">
+	<input type="submit" value="Create a Nurse">
+</form>
+
+<form action="{% url 'hospital:registerAdmin' aid %}">
+	<input type="submit" value="Create an Administrator">
+</form>
+
+<form action="{% url 'hospital:aHospitaldir' aid %}">
+	<input type="submit" value="Directory">
+</form>
+
+<form action="{% url 'hospital:home' %}">
+	<input type="submit" value="Log Out">
+</form>

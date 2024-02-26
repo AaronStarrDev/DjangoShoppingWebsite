@@ -1,0 +1,22 @@
+Python in:
+C:\Users\acstarr\AppData\Programs\Python
+
+Code in:
+C:\Users\acstarr\ShoppingWeb\code
+
+Start venv:
+https://docs.djangoproject.com/en/4.0/howto/windows/
+
+\> ShoppingWeb\Scripts\activate.bat
+
+Run Server:
+python manage.py runserver
+
+http://localhost:8000/shopping/
+http://localhost:8000/admin/
+
+Changes to model:
+https://docs.djangoproject.com/en/4.0/intro/tutorial02/
+
+python manage.py makemigrations shopping
+python manage.py migrate

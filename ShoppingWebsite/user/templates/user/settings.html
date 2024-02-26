@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="d-flex flex-column vh-100">
+{% include 'html/header.html' %}
+<main class="flex-shrink-0">
+    <div class="container pb-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-5">
+                <h2 class="mt-5 mb-5">Settings</h2>
+                <form action="">
+                    <div class="row g-3 mb-5">
+                        <h4 class="mb-1">Basic Info</h4>
+                        <div class="col-12">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" value="" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="" required>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-5">
+                        <h4 class="mb-1">Password</h4>
+                        <div class="col-12">
+                            <label for="current_password" class="form-label">Current Password</label>
+                            <input type="password" class="form-control" id="current_password" name="current_password" value="">
+                        </div>
+                        <div class="col-12">
+                            <label for="new_password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new_password" name="new_password" value="">
+                        </div>
+                        <div class="col-12">
+                            <label for="reenter_new_password" class="form-label">Reenter New Password</label>
+                            <input type="password" class="form-control" id="reenter_new_password" name="reenter_new_password" value="">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-100 btn btn-primary btn-lg">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="mt-auto py-4 bg-dark">
+    <div class="container">
+        <p class="mb-0 text-center text-white">CIS 454 Project</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<h1>Hospital Directory for Nurses</h1>
+Logged in as: {{ user.firstName }} {{ user.lastName }}
+<table border="1">
+    {% if patients %}
+       <br>PATIENTS:<br>
+       There are {{ patients|length }} patients:
+       {% for p in patients %}
+        <tr>
+            <td> {{ p.firstName }} {{ p.lastName }} ::: {{ p.phoneNumber.phoneNumber }} ::: {{ p.email.email }}</td>
+        </tr>
+       {% endfor %}
+    {% else %}
+       There are no records in the system for patients.
+    {% endif %}
+</table>
+<br>
+<table border="1">
+    {% if admins %}
+       <br>ADMINISTRATORS:<br>
+       There are {{ admins|length }} administrators:
+       {% for a in admins %}
+        <tr>
+            <td> {{ a.firstName }} {{ a.lastName }} ::: {{ a.phoneNumber.phoneNumber }} ::: {{ a.email.email }}</td>
+        </tr>
+       {% endfor %}
+    {% else %}
+       There are no records in the system for administrators.
+    {% endif %}
+</table>
+<br>
+<table border="1">
+    {% if doctors %}
+       <br>DOCTORS:<br>
+       There are {{ doctors|length }} doctors:
+       {% for d in doctors %}
+        <tr>
+            <td> {{ d.firstName }} {{ d.lastName }} ::: {{ d.phoneNumber.phoneNumber }} ::: {{ d.email.email }}</td>
+        </tr>
+       {% endfor %}
+    {% else %}
+       There are no records in the system for doctors.
+    {% endif %}
+</table>
+<br>
+<table border="1">
+    {% if nurses %}
+       <br>NURSES:<br>
+       There are {{ nurses|length }} nurses:
+       {% for n in nurses %}
+        <tr>
+            <td> {{ n.firstName }} {{ n.lastName }} ::: {{ n.phoneNumber.phoneNumber }} ::: {{ n.email.email }}</td>
+        </tr>
+       {% endfor %}
+    {% else %}
+       There are no records in the system for nurses.
+    {% endif %}
+
+</table>
+
+<br/>
+    <td><form action="{% url 'hospital:ninfo' user.userName %}">
+	<input type="submit" value="Back">
+    </form></td>

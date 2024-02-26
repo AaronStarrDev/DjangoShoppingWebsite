@@ -1,0 +1,50 @@
+<h1>Patient Information Update</h1>
+
+{% if error_message %}
+	<p><strong>
+		An error occurred while updating:
+		<br/>
+		{{ error_message }}
+	</strong></p>
+{% endif %}
+
+<form action="{% url 'hospital:pupdatesubmit' user.userName %}" method="post">
+	{% csrf_token %}
+
+	</br>
+	<label for="password">Password:</label>
+	<input type="password" name="password" value={{user.password}} id="password">
+	</br>
+	<label for="password2">Confirm Password:</label>
+	<input type="password" name="password2" value={{user.password}} id="password2">
+	</br>
+	<label for="fname">First Name:</label>
+	<input type="text" name="fname" value={{user.firstName}} id="fname">
+	</br>
+	<label for="lname">Last Name:</label>
+	<input type="text" name="lname" value={{user.lastName}} id="lname">
+	</br>
+	<label for="prefferedHospital">Preferred Hospital:</label>
+	<select name="prefferedHospital">
+		{% for h in hospitals.all %}
+			<option value="{{ h.id }}">{{ h.name }}</option>
+		{% endfor %}
+	</select>
+	</br></br></br>
+	
+	<label>Contact Information:</label> </br></br>
+    <label for="phoNum">Phone Number:</label>
+	<input type="text" name="phoNum" id="phoNum" value="{{user.phoneNumber.phoneNumber}}"></input>
+	</br>
+	<label for="email">Email:</label>
+	<input type="text" name="email" id="email" value="{{user.email.email}}"></input>
+	</br>
+    <label for="address">Address:</label>
+	<input type="text" name="address" id="address" value="{{user.address}}"></input>
+	</br></br>
+	<input type="submit">
+</form>
+
+<form action="{% url 'hospital:pinfo' user.userName %}">
+	<input type="submit" value="Cancel">
+</form>

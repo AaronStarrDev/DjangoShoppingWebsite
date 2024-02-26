@@ -1,0 +1,43 @@
+<h1>Patient Information Update</h1>
+
+{% if error_message %}
+	<p><strong>
+		An error occurred while updating:
+		<br/>
+		{{ error_message }}
+	</strong></p>
+{% endif %}
+
+<form action="{% url 'hospital:npatientinfoSumbit' nid user.userName %}" method="post">
+	{% csrf_token %}
+	
+	<label>Name: {{user.firstName}} {{user.lastName}}</label>
+	<br/>
+	
+	<label for="prefferedHospital">Preferred Hospital:</label>
+	<select name="prefferedHospital">
+		{% for h in hospitals.all %}
+			<option value="{{ h.id }}">{{ h.name }}</option>
+		{% endfor %}
+	</select>
+	</br>
+	<label>Medical Information:</label> <br/>
+	<textarea name="medInfo" id="medInfo" rows="4" cols="50">{{user.medicalInfo}}</textarea>
+	</br></br></br>
+	
+	<label>Contact Information:</label> </br></br>
+        <label for="phoNum" font="2">Phone Number:
+		<textarea name="phoNum" id="phoNum" rows="1">{{user.phoneNumber}}</textarea></label>
+	</br>
+        <label for="email" font="2">Email:
+		<textarea name="email" id="email" rows="1">{{user.email}}</textarea></label>
+	</br>
+        <label for="address" font="2">Address:
+        <textarea name="address" id="address" rows="1">{{user.address}}</textarea></label>
+	</br></br>
+	<input type="submit">
+</form>
+
+<form action="{% url 'hospital:npatientlist' nid %}">
+	<input type="submit" value="Cancel">
+</form>

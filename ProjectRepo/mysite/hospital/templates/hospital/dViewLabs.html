@@ -1,0 +1,37 @@
+<h1>Labs [Doctor View]</h1>
+Logged in as: {{ user.firstName }} {{ user.lastName }}
+<br>
+
+<form action="{% url 'hospital:dNewLab' user.userName %}">
+    <input type="submit" value="New Lab">
+</form>
+
+<table border="1">
+    {% if labs %}
+       <br>LABS:<br>
+       There are {{ labs|length }} labs:
+       {% for lab in labs %}
+        <tr>
+            <td> {{ lab.labName }} </td>
+        </tr>
+        <tr>
+            <td><form action="{% url 'hospital:dViewSpecificLab' user.userName lab %}">
+            <input type="submit" value="View">
+            </form></td>
+
+            <td><form action="{% url 'hospital:dEditLab' user.userName %}">
+            <input type="submit" value="Edit">
+            </form></td>
+
+        </tr>
+       {% endfor %}
+    {% else %}
+       There are no labs in the system.
+    {% endif %}
+</table>
+<br>
+
+<br/>
+    <td><form action="{% url 'hospital:dinfo' user.userName %}">
+	<input type="submit" value="Back">
+    </form></td>

@@ -1,0 +1,65 @@
+<h1>Edit Appointment</h1>
+
+{% if error_message %}
+	<p><strong>
+		An error occured in editing an appointment:
+		<br/>
+		{{ error_message }}
+	</strong></p>
+{% endif %}
+
+<form action="{% url 'hospital:neditapptSubmit' user.userName appt.id %}" method="post">
+	{% csrf_token %}
+	
+	<label for="hospital">Hospital:</label>
+	<select name="hospital">
+		{% for h in hospitals.all %}
+			<option value="{{ h.id }}" {% if appt.atHospital == h %}selected="true"{% endif %}>{{ h.name }}</option>
+		{% endfor %}
+	</select>
+	</br>
+	
+	<label for="doctor">Doctor:</label>
+	<select name="doctor">
+		{% for d in doctors.all %}
+			<option value="{{ d.id }}" {% if appt.doctorAppointment == d %}selected="true"{% endif %}>{{ d.firstName }} {{ d.lastName }}</option>
+		{% endfor %}
+	</select>
+	</br>
+	
+	<label for="patient">Patient:</label>
+	<select name="patient">
+		{% for p in patients.all %}
+			<option value="{{ p.id }}">{{ p.firstName }} {{ p.lastName }}</option>
+		{% endfor %}
+	</select>
+	</br>
+	
+	<label for="start">Date:</label>
+	<input type="date" name="date" id="date" value="{{ date }}">
+	</br>
+	
+	<label for="start">Start Time:</label>
+	<input type="time" name="start" id="start" value="{{ startTime }}">
+	</br>
+	
+	<label for="end">Duration:</label>
+	<select name="end" id="end">
+		<option value="15" {% if delta == 15 %}selected="true"{% endif %}>15 Minutes</option>
+		<option value="30" {% if delta == 30 %}selected="true"{% endif %}>30 Minutes</option>
+		<option value="60" {% if delta == 60 %}selected="true"{% endif %}>1 Hour</option>
+	</select>
+	<br/>
+	
+	<label>Notes:</label> <br/>
+	<textarea name="notes" id="notes" rows="4" cols="50">{{ appt.notes }}</textarea>
+	</br>
+	
+	<input type="submit">
+</form>
+
+<br/>
+
+<form action="{% url 'hospital:ncal' user.userName %}">
+	<input type="submit" value="Back">
+</form>

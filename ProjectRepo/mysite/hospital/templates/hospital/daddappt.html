@@ -1,0 +1,54 @@
+<h1>Add Appointment</h1>
+
+{% if error_message %}
+	<p><strong>
+		An error occured in adding an appointment:
+		<br/>
+		{{ error_message }}
+	</strong></p>
+{% endif %}
+
+<form action="{% url 'hospital:daddapptSubmit' user.userName date.toordinal %}" method="post">
+	{% csrf_token %}
+	
+	<label>Date: {{ date.date }}</label>
+	</br>
+	
+	<label for="hospital">Hospital:</label>
+	<select name="hospital">
+		{% for h in hospitals.all %}
+			<option value="{{ h.id }}">{{ h.name }}</option>
+		{% endfor %}
+	</select>
+	</br>
+	
+	<label for="patient">Patient:</label>
+	<select name="patient">
+		{% for p in patients.all %}
+			<option value="{{ p.id }}">{{ p.firstName }} {{ p.lastName }}</option>
+		{% endfor %}
+	</select>
+	</br>
+	
+	<label for="start">Start Time:</label>
+	<input type="time" name="start" id="start">
+	</br>
+	
+	<label for="end">Duration:</label>
+	<select name="end" id="end">
+		<option value="15">15 Minutes</option>
+		<option value="30">30 Minutes</option>
+		<option value="60">1 Hour</option>
+	</select>
+	</br>
+	
+	<label>Notes:</label> <br/>
+	<textarea name="notes" id="notes" rows="4" cols="50"></textarea>
+	</br>
+	
+	<input type="submit">
+</form>
+
+<form action="{% url 'hospital:dcal' user.userName %}">
+	<input type="submit" value="Cancel">
+</form>

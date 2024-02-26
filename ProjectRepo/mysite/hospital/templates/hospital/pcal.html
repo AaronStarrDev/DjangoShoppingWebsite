@@ -1,0 +1,39 @@
+<h1>Calendar for {{ user.firstName }} {{ user.lastName }}</h1>
+
+{% with dates|first as fdate %}
+	View: <a href="{% url 'hospital:pcal' user.userName %}?date={{ fdate.toordinal }}&type=day">Daily</a> <a href="{% url 'hospital:pcal' user.userName %}?date={{ fdate.toordinal }}&type=week">Weekly</a> <a href="{% url 'hospital:pcal' user.userName %}?date={{ fdate.toordinal }}&type=month">Monthly</a>
+	<br/> <a href="{% url 'hospital:pcal' user.userName %}?date={{ prevday }}&type={{ caltype }}">Previous</a> <--> <a href="{% url 'hospital:pcal' user.userName %}?date={{ nextday }}&type={{ caltype }}">Next</a> <br/> <br/>
+{% endwith %}
+
+<table border="1">
+	<tr>
+	{% for date in dates %}
+		<td>
+			{{ date }} <hr/>
+			<ul>
+				{% for appt in appts.all %}
+					{% if appt.startTime.day == date.day and appt.startTime.month == date.month %}
+						<li>
+							<a href="{%url 'hospital:peditappt' user.userName appt.id %}">
+								{{appt.startTime|time:'g:i A'}} to {{appt.endTime|time:'g:i A'}} with {{appt.doctorAppointment.firstName}} {{appt.doctorAppointment.lastName}}
+								{% if appt.notes %}
+									<br/> {{ appt.notes }}
+								{% endif %}
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			
+				<li>
+					<a href="{% url 'hospital:paddappt' user.userName date.toordinal %}">Add Appointment</a>
+				</li>
+			</ul>
+		</td>
+		{% cycle '' '' '' '' '' '' '</tr><tr>' %}
+	{% endfor %}
+	</tr>
+</table>
+
+<br/> <td><form action="{% url 'hospital:pinfo' user.userName %}">
+	<input type="submit" value="Back">
+</form></td>
